@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Prestations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codepres</th>
+                <th>Designationpres</th>
+                <th>Descpres</th>
+                <th>Montantpres</th>
+                <th>Imagepres</th>
+                <th>Datepres</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prestation in prestations %}
+            <tr>
+                <td><a href="{{ path('prestation_show', { 'id': prestation.id }) }}">{{ prestation.id }}</a></td>
+                <td>{{ prestation.codePres }}</td>
+                <td>{{ prestation.designationPres }}</td>
+                <td>{{ prestation.descPres }}</td>
+                <td>{{ prestation.montantPres }}</td>
+                <td>{{ prestation.imagePres }}</td>
+                <td>{% if prestation.datePres %}{{ prestation.datePres|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('prestation_show', { 'id': prestation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('prestation_edit', { 'id': prestation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('prestation_new') }}">Create a new prestation</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -36,6 +36,12 @@ class Facture
      */
     private $dateFact;
 
+     /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ticket")
+   * @ORM\JoinColumn(nullable=false)
+   */
+   private $ticket;
+
     /**
      * Get id
      *
@@ -69,5 +75,52 @@ class Facture
     {
         return $this->codeFact;
     }
-}
 
+    /**
+     * Set dateFact
+     *
+     * @param \DateTime $dateFact
+     *
+     * @return Facture
+     */
+    public function setDateFact($dateFact)
+    {
+        $this->dateFact = $dateFact;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFact
+     *
+     * @return \DateTime
+     */
+    public function getDateFact()
+    {
+        return $this->dateFact;
+    }
+
+    /**
+     * Set ticket
+     *
+     * @param \AppBundle\Entity\Ticket $ticket
+     *
+     * @return Facture
+     */
+    public function setTicket(\AppBundle\Entity\Ticket $ticket)
+    {
+        $this->ticket = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \AppBundle\Entity\Ticket
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+}

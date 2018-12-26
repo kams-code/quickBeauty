@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Equipements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Codeequi</th>
+                <th>Designationequi</th>
+                <th>Prixequi</th>
+                <th>Dateequi</th>
+                <th>Descequi</th>
+                <th>Imageequi</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for equipement in equipements %}
+            <tr>
+                <td><a href="{{ path('equipement_show', { 'id': equipement.id }) }}">{{ equipement.id }}</a></td>
+                <td>{{ equipement.codeEqui }}</td>
+                <td>{{ equipement.designationEqui }}</td>
+                <td>{{ equipement.prixEqui }}</td>
+                <td>{% if equipement.dateEqui %}{{ equipement.dateEqui|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ equipement.descEqui }}</td>
+                <td>{{ equipement.imageEqui }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('equipement_show', { 'id': equipement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('equipement_edit', { 'id': equipement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('equipement_new') }}">Create a new equipement</a>
+        </li>
+    </ul>
+{% endblock %}

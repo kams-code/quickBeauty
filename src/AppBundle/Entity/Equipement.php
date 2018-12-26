@@ -62,7 +62,12 @@ class Equipement
      * @ORM\Column(name="imagePres", type="string", length=255)
      */
     private $imageEqui;
-
+ 
+    /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur")
+   * @ORM\JoinColumn(nullable=false)
+   */
+   private $fournisseur;
 
 
     /**
@@ -194,5 +199,52 @@ class Equipement
     {
         return $this->descEqui;
     }
-}
 
+    /**
+     * Set imageEqui
+     *
+     * @param string $imageEqui
+     *
+     * @return Equipement
+     */
+    public function setImageEqui($imageEqui)
+    {
+        $this->imageEqui = $imageEqui;
+
+        return $this;
+    }
+
+    /**
+     * Get imageEqui
+     *
+     * @return string
+     */
+    public function getImageEqui()
+    {
+        return $this->imageEqui;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \AppBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Equipement
+     */
+    public function setFournisseur(\AppBundle\Entity\Fournisseur $fournisseur)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \AppBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+}

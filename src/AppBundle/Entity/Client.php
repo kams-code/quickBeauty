@@ -225,5 +225,31 @@ class Client
     {
         return $this->emailCli;
     }
+
+    
+    /**
+     * Set dateCli
+     *
+     * @param \DateTime $dateCli
+     *
+     * @return Equipement
+     */
+    public function setDateCli($dateCli)
+    {
+        $this->dateCli = $dateCli;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCli
+     *
+     * @return \DateTime
+     */
+    public function getDateCli()
+    {
+        return $this->dateCli;
+    }
+
 }
 

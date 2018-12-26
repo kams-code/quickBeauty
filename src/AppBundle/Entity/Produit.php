@@ -64,6 +64,11 @@ class Produit
      */
     private $datePro;
 
+    /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur")
+   * @ORM\JoinColumn(nullable=false)
+   */
+   private $fournisseur;
 
     /**
      * Get id
@@ -170,5 +175,76 @@ class Produit
     {
         return $this->datePro;
     }
-}
 
+    /**
+     * Set prixPro
+     *
+     * @param integer $prixPro
+     *
+     * @return Produit
+     */
+    public function setPrixPro($prixPro)
+    {
+        $this->prixPro = $prixPro;
+
+        return $this;
+    }
+
+    /**
+     * Get prixPro
+     *
+     * @return integer
+     */
+    public function getPrixPro()
+    {
+        return $this->prixPro;
+    }
+
+    /**
+     * Set imagePro
+     *
+     * @param string $imagePro
+     *
+     * @return Produit
+     */
+    public function setImagePro($imagePro)
+    {
+        $this->imagePro = $imagePro;
+
+        return $this;
+    }
+
+    /**
+     * Get imagePro
+     *
+     * @return string
+     */
+    public function getImagePro()
+    {
+        return $this->imagePro;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \AppBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Produit
+     */
+    public function setFournisseur(\AppBundle\Entity\Fournisseur $fournisseur)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \AppBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+}

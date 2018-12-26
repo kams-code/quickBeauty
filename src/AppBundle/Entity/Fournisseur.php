@@ -224,5 +224,30 @@ class Fournisseur
     {
         return $this->emailFour;
     }
+
+
+    /**
+     * Set dateFour
+     *
+     * @param \DateTime $dateFour
+     *
+     * @return Fournisseur
+     */
+    public function setDateFour($dateFour)
+    {
+        $this->dateFour = $dateFour;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFour
+     *
+     * @return \DateTime
+     */
+    public function getDateFour()
+    {
+        return $this->dateFour;
+    }
 }
 

@@ -42,6 +42,12 @@ class Reglement
      */
     private $typePaiement;
 
+    /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client")
+   * @ORM\JoinColumn(nullable=false)
+   */
+   private $client;
+
 
     /**
      * Get id
@@ -124,5 +130,28 @@ class Reglement
     {
         return $this->typePaiement;
     }
-}
 
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Client $client
+     *
+     * @return Reglement
+     */
+    public function setClient(\AppBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+}

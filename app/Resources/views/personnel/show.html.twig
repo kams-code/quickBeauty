@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Personnel</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personnel.id }}</td>
+            </tr>
+            <tr>
+                <th>Codeperso</th>
+                <td>{{ personnel.codePerso }}</td>
+            </tr>
+            <tr>
+                <th>Nomperso</th>
+                <td>{{ personnel.nomPerso }}</td>
+            </tr>
+            <tr>
+                <th>Prenomperso</th>
+                <td>{{ personnel.prenomPerso }}</td>
+            </tr>
+            <tr>
+                <th>Adresseperso</th>
+                <td>{{ personnel.adressePerso }}</td>
+            </tr>
+            <tr>
+                <th>Villeperso</th>
+                <td>{{ personnel.villePerso }}</td>
+            </tr>
+            <tr>
+                <th>Telperso</th>
+                <td>{{ personnel.telPerso }}</td>
+            </tr>
+            <tr>
+                <th>Dateperso</th>
+                <td>{% if personnel.datePerso %}{{ personnel.datePerso|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personnel_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('personnel_edit', { 'id': personnel.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

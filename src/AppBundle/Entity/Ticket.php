@@ -42,7 +42,18 @@ class Ticket
      */
     private $dateTic;
 
+       /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation")
+   * @ORM\JoinColumn(nullable=false)
+   */
+   private $prestation; 
 
+   /**
+  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client")
+  * @ORM\JoinColumn(nullable=false)
+  */
+  private $client;
+  
     /**
      * Get id
      *
@@ -124,5 +135,52 @@ class Ticket
     {
         return $this->dateTic;
     }
-}
 
+    /**
+     * Set prestation
+     *
+     * @param \AppBundle\Entity\Prestation $prestation
+     *
+     * @return Ticket
+     */
+    public function setPrestation(\AppBundle\Entity\Prestation $prestation)
+    {
+        $this->prestation = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Get prestation
+     *
+     * @return \AppBundle\Entity\Prestation
+     */
+    public function getPrestation()
+    {
+        return $this->prestation;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Client $client
+     *
+     * @return Ticket
+     */
+    public function setClient(\AppBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+}
