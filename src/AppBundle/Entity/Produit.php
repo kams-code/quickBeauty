@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Produit
@@ -53,6 +54,13 @@ class Produit
      * @var string
      *
      * @ORM\Column(name="imagePres", type="string", length=255)
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 600,
+     *     minHeight = 200,
+     *     maxHeight = 600
+     * )
+     * 
      */
     private $imagePro;
 

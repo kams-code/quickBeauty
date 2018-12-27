@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class PrestationType extends AbstractType
 {
@@ -13,7 +14,10 @@ class PrestationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('codePres')->add('designationPres')->add('descPres')->add('montantPres')->add('imagePres')->add('datePres');
+        $builder->add('codePres')->add('designationPres')->add('descPres')
+        ->add('montantPres')
+        ->add('imagePres', 'Symfony\Component\Form\Extension\Core\Type\FileType', array('label' => 'Image'))
+        ->add('datePres');
     }
     
     /**

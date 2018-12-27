@@ -24,7 +24,8 @@
                 <td>{{ prestation.designationPres }}</td>
                 <td>{{ prestation.descPres }}</td>
                 <td>{{ prestation.montantPres }}</td>
-                <td>{{ prestation.imagePres }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ prestation.imagePres) }}" height="100px" width="250px">
+</td>
                 <td>{% if prestation.datePres %}{{ prestation.datePres|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
