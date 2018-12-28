@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Reservation creation</h1>
+<div class="row">
+                        
+                            <div class="col-sm-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><h3 class="panel-title">Form validations</h3></div>
+                                    <div class="panel-body">
+                                        <div class="form">
+    <h3>Reservation creation</h3>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -13,4 +20,10 @@
             <a href="{{ path('reservation_index') }}">Back to the list</a>
         </li>
     </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 {% endblock %}

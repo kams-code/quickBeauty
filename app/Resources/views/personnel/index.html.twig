@@ -2,18 +2,27 @@
 
 {% block body %}
     <h1>Personnels list</h1>
-
-    <table>
+ <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">liste de personnel</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Codeperso</th>
-                <th>Nomperso</th>
-                <th>Prenomperso</th>
-                <th>Adresseperso</th>
-                <th>Villeperso</th>
-                <th>Telperso</th>
-                <th>Dateperso</th>
+                <th>Code</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Telephone</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -42,7 +51,13 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
     <ul>
         <li>
             <a href="{{ path('personnel_new') }}">Create a new personnel</a>

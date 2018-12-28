@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Equipement
@@ -60,11 +61,17 @@ class Equipement
      * @var string
      *
      * @ORM\Column(name="imagePres", type="string", length=255)
+     * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 400,
+     *     minHeight = 200,
+     *     maxHeight = 400
+     * )
      */
-    private $imageEqui;
+    protected $imageEqui;
  
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur")
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur",cascade={"persist"})
    * @ORM\JoinColumn(nullable=false)
    */
    private $fournisseur;
@@ -199,5 +206,52 @@ class Equipement
     {
         return $this->descEqui;
     }
-}
 
+    /**
+     * Set imageEqui
+     *
+     * @param string $imageEqui
+     *
+     * @return Equipement
+     */
+    public function setImageEqui($imageEqui)
+    {
+        $this->imageEqui = $imageEqui;
+
+        return $this;
+    }
+
+    /**
+     * Get imageEqui
+     *
+     * @return string
+     */
+    public function getImageEqui()
+    {
+        return $this->imageEqui;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \AppBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Equipement
+     */
+    public function setFournisseur(\AppBundle\Entity\Fournisseur $fournisseur)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \AppBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+}

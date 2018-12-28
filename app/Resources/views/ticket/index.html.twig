@@ -2,14 +2,23 @@
 
 {% block body %}
     <h1>Tickets list</h1>
-
-    <table>
+ <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">liste des tickets</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Codetic</th>
-                <th>Montanttic</th>
-                <th>Datetic</th>
+                <th>Code</th>
+                <th>Montant</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,6 +43,13 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
     <ul>
         <li>

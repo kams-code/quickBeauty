@@ -5,6 +5,11 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Validator\Constraints\Email;
 
 class FournisseurType extends AbstractType
 {
@@ -13,7 +18,18 @@ class FournisseurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nomFour')->add('prenomFour')->add('adresseFour')->add('telFour')->add('villeFour')->add('emailFour')->add('dateFour');
+        $builder->add('nomFour',TextType::class,array('label' =>'nom', 'attr'=>array('class'=>'form-horizontal') ))
+        ->add('prenomFour',TextType::class,array('label' =>'prenom', 'attr'=>array('class'=>'form-horizontal') ))
+        ->add('adresseFour',TextType::class,array('label' =>'adresse', 'attr'=>array('class'=>'form-horizontal') ))
+        ->add('telFour',TextType::class,array('label' =>'numero de telephone', 'attr'=>array('class'=>'form-horizontal') ))
+        ->add('villeFour',TextType::class,array('label' =>'ville', 'attr'=>array('class'=>'form-horizontal') ))
+        ->add('emailFour', EmailType::class, array('label'=>'email','attr' => array('placeholder' => 'Your email address'),
+        'constraints' => array(
+            new NotBlank(array("message" => "Please provide a valid email")),
+            new Email(array("message" => "Your email doesn't seems to be valid")),
+        )
+    ))
+        ->add('dateFour',DateType::class,array('label' =>'date', 'attr'=>array('class'=>'form-horizontal') ));
     }
     
     /**

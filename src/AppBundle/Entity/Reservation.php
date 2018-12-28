@@ -37,14 +37,14 @@ class Reservation
 
     
      /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $prestation; 
 
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $client;
 

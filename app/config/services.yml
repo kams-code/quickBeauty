@@ -44,3 +44,10 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+    
+    app.doctrine_image_listener:
+        class: AppBundle\EventListener\ImageUploadListener1
+        arguments: ['@app.image_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

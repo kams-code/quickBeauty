@@ -73,8 +73,8 @@ class Produit
     private $datePro;
 
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $fournisseur;
 

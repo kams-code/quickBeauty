@@ -43,16 +43,12 @@ class Ticket
     private $dateTic;
 
        /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation")
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Reservation",cascade={"persist"})
    * @ORM\JoinColumn(nullable=false)
    */
-   private $prestation; 
+   private $reservation; 
 
-   /**
-  * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client")
-  * @ORM\JoinColumn(nullable=false)
-  */
-  private $client;
+ 
   
     /**
      * Get id
@@ -135,5 +131,52 @@ class Ticket
     {
         return $this->dateTic;
     }
-}
 
+    /**
+     * Set reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Ticket
+     */
+    public function setReservation(\AppBundle\Entity\Reservation $reservation)
+    {
+        $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \AppBundle\Entity\Reservation
+     */
+    public function getReservation()
+    {
+        return $this->reservation;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \AppBundle\Entity\Client $client
+     *
+     * @return Ticket
+     */
+    public function setClient(\AppBundle\Entity\Client $client)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \AppBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+}

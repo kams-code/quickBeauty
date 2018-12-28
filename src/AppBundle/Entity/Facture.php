@@ -37,8 +37,8 @@ class Facture
     private $dateFact;
 
      /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ticket")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ticket",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $ticket;
 

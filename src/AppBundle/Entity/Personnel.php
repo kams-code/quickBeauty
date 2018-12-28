@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="personnel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonnelRepository")
  */
-class Personnel
+class Personnel extends User
 {
     /**
      * @var int
@@ -19,62 +20,62 @@ class Personnel
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="codePerso", type="string", length=255, unique=true)
      */
-    private $codePerso;
+    protected $codePerso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomPerso", type="string", length=255)
      */
-    private $nomPerso;
+    protected $nomPerso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenomPerso", type="string", length=255)
      */
-    private $prenomPerso;
+    protected $prenomPerso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="adressePerso", type="string", length=255)
      */
-    private $adressePerso;
+    protected $adressePerso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="villePerso", type="string", length=255)
      */
-    private $villePerso;
+    protected $villePerso;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telPerso", type="string", length=255)
      */
-    private $telPerso;
+    protected $telPerso;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="datePerso", type="datetime")
      */
-    private $datePerso;
+    protected $datePerso;
 
-     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation")
-   * @ORM\JoinColumn(nullable=false)
-   */
-   private $prestation;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation",cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+     */
+   protected $prestation;
 
 
     /**

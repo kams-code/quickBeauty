@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="equipement")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\EquipementRepository")
+ * 
  */
 class Equipement
 {
@@ -61,18 +62,19 @@ class Equipement
      * @var string
      *
      * @ORM\Column(name="imagePres", type="string", length=255)
+     * @Assert\NotBlank(message="Ajouter une image jpg")
      * @Assert\Image(
      *     minWidth = 200,
-     *     maxWidth = 400,
+     *     maxWidth = 600,
      *     minHeight = 200,
-     *     maxHeight = 400
+     *     maxHeight = 600
      * )
      */
     protected $imageEqui;
  
     /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur")
-   * @ORM\JoinColumn(nullable=false)
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $fournisseur;
 

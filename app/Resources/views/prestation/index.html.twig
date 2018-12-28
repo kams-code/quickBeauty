@@ -2,17 +2,25 @@
 
 {% block body %}
     <h1>Prestations list</h1>
-
-    <table>
+ <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">liste des prestation</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive">
+                                                    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Codepres</th>
-                <th>Designationpres</th>
-                <th>Descpres</th>
-                <th>Montantpres</th>
-                <th>Imagepres</th>
-                <th>Datepres</th>
+                <th>Code</th>
+                <th>Designation</th>
+                <th>Description</th>
+                <th>Montant</th>
+                <th>Image</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,14 +34,19 @@
                 <td>{{ prestation.montantPres }}</td>
                 <td><img src="{{ asset('uploads/images/' ~ prestation.imagePres) }}" height="100px" width="250px">
 </td>
-                <td>{% if prestation.datePres %}{{ prestation.datePres|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('prestation_show', { 'id': prestation.id }) }}">show</a>
+                            <a href="{{ path('prestation_show', { 'id': prestation.id }) }}"><i class="ion-eye"></i></a>
                         </li>
                         <li>
-                            <a href="{{ path('prestation_edit', { 'id': prestation.id }) }}">edit</a>
+                            <a href="{{ path('prestation_edit', { 'id': prestation.id }) }}"><i class="ion-edit"></i></a>
+                        </li>
+                        <li>
+                            
+                                
+                                 <a href="{{ path('prestation_delete', { 'id': prestation.id }) }}"><i class="ion-close"></i></a>
+                            
                         </li>
                     </ul>
                 </td>
@@ -41,7 +54,13 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
     <ul>
         <li>
             <a href="{{ path('prestation_new') }}">Create a new prestation</a>
