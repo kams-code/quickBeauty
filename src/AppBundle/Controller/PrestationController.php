@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Prestation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Prestation controller.
@@ -36,6 +38,7 @@ class PrestationController extends Controller
      *
      * @Route("/new", name="prestation_new")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -78,6 +81,7 @@ class PrestationController extends Controller
      *
      * @Route("/{id}/edit", name="prestation_edit")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Prestation $prestation)
     {
@@ -103,6 +107,7 @@ class PrestationController extends Controller
      *
      * @Route("/{id}", name="prestation_delete")
      * @Method("DELETE")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Prestation $prestation)
     {

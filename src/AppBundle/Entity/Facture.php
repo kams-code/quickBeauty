@@ -24,17 +24,17 @@ class Facture
     /**
      * @var string
      *
-     * @ORM\Column(name="codeFact", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codeFact;
+    private $code;
     
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePro", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateFact;
+    private $date;
 
      /**
    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ticket",cascade={"persist"})
@@ -53,51 +53,51 @@ class Facture
     }
 
     /**
-     * Set codeFact
+     * Set code
      *
-     * @param string $codeFact
+     * @param string $code
      *
      * @return Facture
      */
-    public function setCodeFact($codeFact)
+    public function setCode($code)
     {
-        $this->codeFact = $codeFact;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codeFact
+     * Get code
      *
      * @return string
      */
-    public function getCodeFact()
+    public function getCode()
     {
-        return $this->codeFact;
+        return $this->code;
     }
 
     /**
-     * Set dateFact
+     * Set date
      *
-     * @param \DateTime $dateFact
+     * @param \DateTime $date
      *
      * @return Facture
      */
-    public function setDateFact($dateFact)
+    public function setDate($date)
     {
-        $this->dateFact = $dateFact;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateFact
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateFact()
+    public function getDate()
     {
-        return $this->dateFact;
+        return $this->date;
     }
 
     /**

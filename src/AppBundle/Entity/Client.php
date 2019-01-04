@@ -24,52 +24,52 @@ class Client
     /**
      * @var string
      *
-     * @ORM\Column(name="nomCli", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $nomCli;
+    private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomCli", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
-    private $prenomCli;
+    private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresseCli", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
-    private $adresseCli;
+    private $adresse;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="villeCli", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255)
      */
-    private $villeCli;
+    private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telCli", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
-    private $telCli;
+    private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="emailCli", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $emailCli;
+    private $email;
 
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePro", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateCli;
+    private $date;
 
 
     /**
@@ -83,172 +83,177 @@ class Client
     }
 
     /**
-     * Set nomCli
+     * Set nom
      *
-     * @param string $nomCli
+     * @param string $nom
      *
      * @return Client
      */
-    public function setNomCli($nomCli)
+    public function setNom($nom)
     {
-        $this->nomCli = $nomCli;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get nomCli
+     * Get nom
      *
      * @return string
      */
-    public function getNomCli()
+    public function getNom()
     {
-        return $this->nomCli;
+        return $this->nom;
     }
 
     /**
-     * Set prenomCli
+     * Set prenom
      *
-     * @param string $prenomCli
+     * @param string $prenom
      *
      * @return Client
      */
-    public function setPrenomCli($prenomCli)
+    public function setPrenom($prenom)
     {
-        $this->prenomCli = $prenomCli;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get prenomCli
+     * Get prenom
      *
      * @return string
      */
-    public function getPrenomCli()
+    public function getPrenom()
     {
-        return $this->prenomCli;
+        return $this->prenom;
     }
 
     /**
-     * Set adresseCli
+     * Set adresse
      *
-     * @param string $adresseCli
+     * @param string $adresse
      *
      * @return Client
      */
-    public function setAdresseCli($adresseCli)
+    public function setAdresse($adresse)
     {
-        $this->adresseCli = $adresseCli;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
     /**
-     * Get adresseCli
+     * Get adresse
      *
      * @return string
      */
-    public function getAdresseCli()
+    public function getAdresse()
     {
-        return $this->adresseCli;
+        return $this->adresse;
     }
 
     /**
-     * Set villeCli
+     * Set ville
      *
-     * @param string $villeCli
+     * @param string $ville
      *
      * @return Client
      */
-    public function setVilleCli($villeCli)
+    public function setVille($ville)
     {
-        $this->villeCli = $villeCli;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get villeCli
+     * Get ville
      *
      * @return string
      */
-    public function getVilleCli()
+    public function getVille()
     {
-        return $this->villeCli;
+        return $this->ville;
     }
 
     /**
-     * Set telCli
+     * Set telephone
      *
-     * @param string $telCli
+     * @param string $telephone
      *
      * @return Client
      */
-    public function setTelCli($telCli)
+    public function setTelephone($telephone)
     {
-        $this->telCli = $telCli;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get telCli
+     * Get telephone
      *
      * @return string
      */
-    public function getTelCli()
+    public function getTelephone()
     {
-        return $this->telCli;
+        return $this->telephone;
     }
 
     /**
-     * Set emailCli
+     * Set email
      *
-     * @param string $emailCli
+     * @param string $email
      *
      * @return Client
      */
-    public function setEmailCli($emailCli)
+    public function setEmail($email)
     {
-        $this->emailCli = $emailCli;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get emailCli
+     * Get email
      *
      * @return string
      */
-    public function getEmailCli()
+    public function getEmail()
     {
-        return $this->emailCli;
+        return $this->email;
     }
 
     
     /**
-     * Set dateCli
+     * Set date
      *
-     * @param \DateTime $dateCli
+     * @param \DateTime $date
      *
-     * @return Equipement
+     * @return Client
      */
-    public function setDateCli($dateCli)
+    public function setDate($date)
     {
-        $this->dateCli = $dateCli;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateCli
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateCli()
+    public function getDate()
     {
-        return $this->dateCli;
+        return $this->date;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 
 }

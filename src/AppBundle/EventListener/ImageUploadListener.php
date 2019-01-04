@@ -37,7 +37,7 @@ class ImageUploadListener
             return;
         }
 
-        $file = $entity->getImagePres();
+        $file = $entity->getImage();
 
         // only upload new files
         if (!$file instanceof UploadedFile) {
@@ -45,7 +45,7 @@ class ImageUploadListener
         }
 
         $fileName = $this->uploader->upload($file);
-        $entity->setImagePres($fileName);
+        $entity->setImage($fileName);
     }
 }
 

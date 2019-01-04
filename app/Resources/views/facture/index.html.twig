@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Factures list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste des factures</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -25,8 +14,8 @@
         {% for facture in factures %}
             <tr>
                 <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{ facture.id }}</a></td>
-                <td>{{ facture.codeFact }}</td>
-                <td>{% if facture.dateFact %}{{ facture.dateFact|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ facture.code }}</td>
+                <td>{% if facture.date %}{{ facture.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -40,17 +29,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('facture_new') }}">Create a new facture</a>
-        </li>
-    </ul>
+
 {% endblock %}

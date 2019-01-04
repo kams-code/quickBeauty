@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Clients list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Responsive Table</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -30,13 +19,13 @@
         {% for client in clients %}
             <tr>
                 <td><a href="{{ path('client_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
-                <td>{{ client.nomCli }}</td>
-                <td>{{ client.prenomCli }}</td>
-                <td>{{ client.adresseCli }}</td>
-                <td>{{ client.villeCli }}</td>
-                <td>{{ client.telCli }}</td>
-                <td>{{ client.emailCli }}</td>
-                <td>{% if client.dateCli %}{{ client.dateCli|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.adresse }}</td>
+                <td>{{ client.ville }}</td>
+                <td>{{ client.telephone }}</td>
+                <td>{{ client.email }}</td>
+                <td>{% if client.date %}{{ client.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -50,17 +39,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('client_new') }}">Create a new client</a>
-        </li>
-    </ul>
+
 {% endblock %}

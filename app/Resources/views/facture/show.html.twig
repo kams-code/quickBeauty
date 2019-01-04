@@ -1,21 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Facture</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ facture.id }}</td>
             </tr>
             <tr>
-                <th>Codefact</th>
-                <td>{{ facture.codeFact }}</td>
+                <th>Code</th>
+                <td>{{ facture.code }}</td>
             </tr>
             <tr>
-                <th>Datefact</th>
-                <td>{% if facture.dateFact %}{{ facture.dateFact|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if facture.date %}{{ facture.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

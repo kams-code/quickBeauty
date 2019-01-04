@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Reservations list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste des reservations</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -25,8 +14,8 @@
         {% for reservation in reservations %}
             <tr>
                 <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                <td>{{ reservation.codeReserv }}</td>
-                <td>{% if reservation.dateReserv %}{{ reservation.dateReserv|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ reservation.code }}</td>
+                <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -40,17 +29,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('reservation_new') }}">Create a new reservation</a>
-        </li>
-    </ul>
+    
 {% endblock %}

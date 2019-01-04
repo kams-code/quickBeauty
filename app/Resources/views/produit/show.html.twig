@@ -1,37 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Produit</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ produit.id }}</td>
             </tr>
             <tr>
-                <th>Codepro</th>
-                <td>{{ produit.codePro }}</td>
+                <th>Code</th>
+                <td>{{ produit.code }}</td>
             </tr>
             <tr>
-                <th>Designationpro</th>
-                <td>{{ produit.designationPro }}</td>
+                <th>Designation</th>
+                <td>{{ produit.designation }}</td>
             </tr>
             <tr>
-                <th>Descpro</th>
-                <td>{{ produit.descPro }}</td>
+                <th>Description</th>
+                <td>{{ produit.description }}</td>
             </tr>
             <tr>
-                <th>Prixpro</th>
-                <td>{{ produit.prixPro }}</td>
+                <th>Prix</th>
+                <td>{{ produit.prix }}</td>
             </tr>
             <tr>
-                <th>Imagepro</th>
-                <td>{{ produit.imagePro }}</td>
+                <th>Image</th>
+                <td>{{ produit.image }}</td>
             </tr>
             <tr>
-                <th>Datepro</th>
-                <td>{% if produit.datePro %}{{ produit.datePro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if produit.date %}{{ produit.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

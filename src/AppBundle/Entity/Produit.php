@@ -25,58 +25,47 @@ class Produit
     /**
      * @var string
      *
-     * @ORM\Column(name="codePro", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codePro;
+    private $code;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="designationPro", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $designationPro;
+    private $designation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descPro", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255)
      */
-    private $descPro;
+    private $description;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="prixEqui", type="integer")
+     * @ORM\Column(name="prix", type="integer")
      */
-    private $prixPro;
+    private $prix;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="imagePres", type="string", length=255)
-     * * @Assert\Image(
-     *     minWidth = 200,
-     *     maxWidth = 600,
-     *     minHeight = 200,
-     *     maxHeight = 600
-     * )
+     * @ORM\Column(name="image", type="string", length=255)
+     * 
      * 
      */
-    private $imagePro;
+    private $image;
 
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePro", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $datePro;
-
-    /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur",cascade={"persist"})
-   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-   */
-   private $fournisseur;
+    private $date;
 
     /**
      * Get id
@@ -89,170 +78,152 @@ class Produit
     }
 
     /**
-     * Set codePro
+     * Set code
      *
-     * @param string $codePro
+     * @param string $code
      *
      * @return Produit
      */
-    public function setCodePro($codePro)
+    public function setCode($code)
     {
-        $this->codePro = $codePro;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codePro
+     * Get code
      *
      * @return string
      */
-    public function getCodePro()
+    public function getCode()
     {
-        return $this->codePro;
+        return $this->code;
     }
 
     /**
-     * Set designationPro
+     * Set designation
      *
-     * @param string $designationPro
+     * @param string $designation
      *
      * @return Produit
      */
-    public function setDesignationPro($designationPro)
+    public function setDesignation($designation)
     {
-        $this->designationPro = $designationPro;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get designationPro
+     * Get designation
      *
      * @return string
      */
-    public function getDesignationPro()
+    public function getDesignation()
     {
-        return $this->designationPro;
+        return $this->designation;
     }
 
     /**
-     * Set descPro
+     * Set description
      *
-     * @param string $descPro
+     * @param string $description
      *
      * @return Produit
      */
-    public function setDescPro($descPro)
+    public function setDescription($description)
     {
-        $this->descPro = $descPro;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descPro
+     * Get desc
      *
      * @return string
      */
-    public function getDescPro()
+    public function getDescription()
     {
-        return $this->descPro;
+        return $this->description;
     }
 
     /**
-     * Set datePro
+     * Set date
      *
-     * @param \DateTime $datePro
+     * @param \DateTime $date
      *
      * @return Produit
      */
-    public function setDatePro($datePro)
+    public function setDate($date)
     {
-        $this->datePro = $datePro;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get datePro
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDatePro()
+    public function getDate()
     {
-        return $this->datePro;
+        return $this->date;
     }
 
     /**
-     * Set prixPro
+     * Set prix
      *
-     * @param integer $prixPro
+     * @param integer $prix
      *
      * @return Produit
      */
-    public function setPrixPro($prixPro)
+    public function setPrix($prix)
     {
-        $this->prixPro = $prixPro;
+        $this->prix = $prix;
 
         return $this;
     }
 
     /**
-     * Get prixPro
+     * Get prix
      *
      * @return integer
      */
-    public function getPrixPro()
+    public function getPrix()
     {
-        return $this->prixPro;
+        return $this->prix;
     }
 
     /**
-     * Set imagePro
+     * Set image
      *
-     * @param string $imagePro
+     * @param string $image
      *
      * @return Produit
      */
-    public function setImagePro($imagePro)
+    public function setImage($image)
     {
-        $this->imagePro = $imagePro;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get imagePro
+     * Get image
      *
      * @return string
      */
-    public function getImagePro()
+    public function getImage()
     {
-        return $this->imagePro;
+        return $this->image;
     }
 
-    /**
-     * Set fournisseur
-     *
-     * @param \AppBundle\Entity\Fournisseur $fournisseur
-     *
-     * @return Produit
-     */
-    public function setFournisseur(\AppBundle\Entity\Fournisseur $fournisseur)
+    public function __toString()
     {
-        $this->fournisseur = $fournisseur;
-
-        return $this;
+        return $this->getDesignation();
     }
 
-    /**
-     * Get fournisseur
-     *
-     * @return \AppBundle\Entity\Fournisseur
-     */
-    public function getFournisseur()
-    {
-        return $this->fournisseur;
-    }
 }

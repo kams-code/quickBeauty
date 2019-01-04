@@ -10,14 +10,4 @@ namespace AppBundle\Repository;
  */
 class EquipementRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllActiveByCp($cp)
-    {
-        return $this->createQueryBuilder('p')
-            ->leftJoin('p.adresses', 'a')
-            ->leftJoin('a.ville', 'v')
-            ->where('v.cp=:cp')
-            ->setParameter('cp', $cp);
-    
-    }
 }
-

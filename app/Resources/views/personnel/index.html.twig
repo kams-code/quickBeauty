@@ -1,27 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Personnels list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste de personnel</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Code</th>
                 <th>Nom</th>
+                <th>Code</th>
                 <th>Prenom</th>
                 <th>Adresse</th>
-                <th>Ville</th>
-                <th>Telephone</th>
+                <th>Numero</th>
                 <th>Date</th>
                 <th>Actions</th>
             </tr>
@@ -30,13 +18,12 @@
         {% for personnel in personnels %}
             <tr>
                 <td><a href="{{ path('personnel_show', { 'id': personnel.id }) }}">{{ personnel.id }}</a></td>
-                <td>{{ personnel.codePerso }}</td>
-                <td>{{ personnel.nomPerso }}</td>
-                <td>{{ personnel.prenomPerso }}</td>
-                <td>{{ personnel.adressePerso }}</td>
-                <td>{{ personnel.villePerso }}</td>
-                <td>{{ personnel.telPerso }}</td>
-                <td>{% if personnel.datePerso %}{{ personnel.datePerso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ personnel.nom }}</td>
+                <td>{{ personnel.code }}</td>
+                <td>{{ personnel.prenom }}</td>
+                <td>{{ personnel.adresse }}</td>
+                <td>{{ personnel.numero }}</td>
+                <td>{% if personnel.date %}{{ personnel.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -50,17 +37,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('personnel_new') }}">Create a new personnel</a>
-        </li>
-    </ul>
+   
 {% endblock %}

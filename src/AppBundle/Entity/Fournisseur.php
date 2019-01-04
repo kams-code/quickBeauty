@@ -24,52 +24,63 @@ class Fournisseur
     /**
      * @var string
      *
-     * @ORM\Column(name="nomFour", type="string", length=255)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    private $nomFour;
+    private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomFour", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
-    private $prenomFour;
+    private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adresseFour", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
-    private $adresseFour;
+    private $adresse;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telFour", type="string", length=255)
+     * @ORM\Column(name="telephone", type="string", length=255)
      */
-    private $telFour;
+    private $telephone;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="villeFour", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255)
      */
-    private $villeFour;
+    private $ville;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="emailFour", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255)
      */
-    private $emailFour;
-    
+    private $email;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePro", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateFour;
+    private $date;
+
+   /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produit",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+   */
+   private $produit; 
+
+      /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Equipement",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+   */
+  private $equipement; 
 
     /**
      * Get id
@@ -82,172 +93,240 @@ class Fournisseur
     }
 
     /**
-     * Set nomFour
+     * Set nom
      *
-     * @param string $nomFour
+     * @param string $nom
      *
      * @return Fournisseur
      */
-    public function setNomFour($nomFour)
+    public function setNom($nom)
     {
-        $this->nomFour = $nomFour;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    /**
-     * Get nomFour
-     *
-     * @return string
-     */
-    public function getNomFour()
-    {
-        return $this->nomFour;
-    }
 
     /**
-     * Set prenomFour
+     * Set prenom
      *
      * @param string $prenomFour
      *
      * @return Fournisseur
      */
-    public function setPrenomFour($prenomFour)
+    public function setPrenom($prenom)
     {
-        $this->prenomFour = $prenomFour;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get prenomFour
+     * Get prenom
      *
      * @return string
      */
-    public function getPrenomFour()
+    public function getPrenom()
     {
-        return $this->prenomFour;
+        return $this->prenom;
     }
 
     /**
-     * Set adresseFour
+     * Set adresse
      *
-     * @param string $adresseFour
+     * @param string $adresse
      *
      * @return Fournisseur
      */
-    public function setAdresseFour($adresseFour)
+    public function setAdresse($adresse)
     {
-        $this->adresseFour = $adresseFour;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
     /**
-     * Get adresseFour
+     * Get adresse
      *
      * @return string
      */
-    public function getAdresseFour()
+    public function getAdresse()
     {
-        return $this->adresseFour;
+        return $this->adresse;
     }
 
     /**
-     * Set telFour
+     * Set telephone
      *
-     * @param string $telFour
+     * @param string $telephone
      *
      * @return Fournisseur
      */
-    public function setTelFour($telFour)
+    public function setTelephone($telephone)
     {
-        $this->telFour = $telFour;
+        $this->telephone = $telephone;
 
         return $this;
     }
 
     /**
-     * Get telFour
+     * Get telephone
      *
      * @return string
      */
-    public function getTelFour()
+    public function getTelephone()
     {
-        return $this->telFour;
+        return $this->telephone;
     }
 
     /**
-     * Set villeFour
+     * Set ville
      *
-     * @param string $villeFour
+     * @param string $ville
      *
      * @return Fournisseur
      */
-    public function setVilleFour($villeFour)
+    public function setVille($ville)
     {
-        $this->villeFour = $villeFour;
+        $this->ville = $ville;
 
         return $this;
     }
 
     /**
-     * Get villeFour
+     * Get ville
      *
      * @return string
      */
-    public function getVilleFour()
+    public function getVille()
     {
-        return $this->villeFour;
+        return $this->ville;
     }
 
     /**
-     * Set emailFour
+     * Set email
      *
-     * @param string $emailFour
+     * @param string $email
      *
      * @return Fournisseur
      */
-    public function setEmailFour($emailFour)
+    public function setEmail($email)
     {
-        $this->emailFour = $emailFour;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get emailFour
+     * Get email
      *
      * @return string
      */
-    public function getEmailFour()
+    public function getEmail()
     {
-        return $this->emailFour;
+        return $this->email;
     }
 
 
     /**
-     * Set dateFour
+     * Set date
      *
-     * @param \DateTime $dateFour
+     * @param \DateTime $date
      *
      * @return Fournisseur
      */
-    public function setDateFour($dateFour)
+    public function setDateFour($date)
     {
-        $this->dateFour = $dateFour;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateFour
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateFour()
+    public function getDate()
     {
-        return $this->dateFour;
+        return $this->date;
     }
-}
 
+    /**
+     * Get nom
+     *
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Fournisseur
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Set produit
+     *
+     * @param \AppBundle\Entity\Produit $produit
+     *
+     * @return Fournisseur
+     */
+    public function setProduit(\AppBundle\Entity\Produit $produit = null)
+    {
+        $this->produit = $produit;
+
+        return $this;
+    }
+
+    /**
+     * Get produit
+     *
+     * @return \AppBundle\Entity\Produit
+     */
+    public function getProduit()
+    {
+        return $this->produit;
+    }
+
+    /**
+     * Set equipement
+     *
+     * @param \AppBundle\Entity\equipement $equipement
+     *
+     * @return Fournisseur
+     */
+    public function setEquipement(\AppBundle\Entity\equipement $equipement = null)
+    {
+        $this->equipement = $equipement;
+
+        return $this;
+    }
+
+    /**
+     * Get equipement
+     *
+     * @return \AppBundle\Entity\equipement
+     */
+    public function getEquipement()
+    {
+        return $this->equipement;
+    }
+
+
+        public function __toString()
+        {
+            return $this->getNom();
+        }
+}

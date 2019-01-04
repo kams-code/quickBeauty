@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Tickets list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste des tickets</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -26,16 +15,16 @@
         {% for ticket in tickets %}
             <tr>
                 <td><a href="{{ path('ticket_show', { 'id': ticket.id }) }}">{{ ticket.id }}</a></td>
-                <td>{{ ticket.codeTic }}</td>
-                <td>{{ ticket.montantTic }}</td>
-                <td>{% if ticket.dateTic %}{{ ticket.dateTic|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ticket.code }}</td>
+                <td>{{ ticket.montant }}</td>
+                <td>{% if ticket.date %}{{ ticket.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('ticket_show', { 'id': ticket.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('ticket_edit', { 'id': ticket.id }) }}">edit</a>
+                            <a href="{{  class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#full-width-modal" path('ticket_edit', { 'id': ticket.id }) }}" >edit</a>
                         </li>
                     </ul>
                 </td>
@@ -43,17 +32,5 @@
         {% endfor %}
         </tbody>
     </table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('ticket_new') }}">Create a new ticket</a>
-        </li>
-    </ul>
 {% endblock %}

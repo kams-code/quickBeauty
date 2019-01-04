@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Equipements list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste des equipements</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -29,13 +18,12 @@
         {% for equipement in equipements %}
             <tr>
                 <td><a href="{{ path('equipement_show', { 'id': equipement.id }) }}">{{ equipement.id }}</a></td>
-                <td>{{ equipement.codeEqui }}</td>
-                <td>{{ equipement.designationEqui }}</td>
-                <td>{{ equipement.prixEqui }}</td>
-                <td>{% if equipement.dateEqui %}{{ equipement.dateEqui|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ equipement.descEqui }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ equipement.imageEqui) }}" height="100px" width="250px">
-</td>
+                <td>{{ equipement.code }}</td>
+                <td>{{ equipement.designation }}</td>
+                <td>{{ equipement.prix }}</td>
+                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ equipement.description }}</td>
+                <td>{{ equipement.image }}</td>
                 <td>
                     <ul>
                         <li>
@@ -49,18 +37,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('equipement_new') }}">Create a new equipement</a>
-        </li>
-    </ul>
 {% endblock %}

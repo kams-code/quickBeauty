@@ -24,29 +24,37 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="codeReserv", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codeReserv;
+    private $code;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateReserv", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateReserv;
+    private $date;
 
     
      /**
    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation",cascade={"persist"})
    * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
-   private $prestation; 
+    private $prestation; 
 
     /**
    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Client",cascade={"persist"})
    * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
    */
    private $client;
+
+  /**
+     * @ORM\OneToMany(targetEntity="Ticket", mappedBy="reservation", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $ticket;
+
+   
 
     /**
      * Get id
@@ -59,51 +67,51 @@ class Reservation
     }
 
     /**
-     * Set codeReserv
+     * Set code
      *
-     * @param string $codeReserv
+     * @param string $code
      *
      * @return Reservation
      */
-    public function setCodeReserv($codeReserv)
+    public function setCode($code)
     {
-        $this->codeReserv = $codeReserv;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codeReserv
+     * Get code
      *
      * @return string
      */
-    public function getCodeReserv()
+    public function getCode()
     {
-        return $this->codeReserv;
+        return $this->code;
     }
 
     /**
-     * Set dateReserv
+     * Set date
      *
-     * @param \DateTime $dateReserv
+     * @param \DateTime $date
      *
      * @return Reservation
      */
-    public function setDateReserv($dateReserv)
+    public function setDateReserv($date)
     {
-        $this->dateReserv = $dateReserv;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateReserv
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateReserv()
+    public function getDate()
     {
-        return $this->dateReserv;
+        return $this->date;
     }
 
     /**
@@ -152,5 +160,65 @@ class Reservation
     public function getClient()
     {
         return $this->client;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ticket = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Reservation
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Add ticket
+     *
+     * @param \AppBundle\Entity\Ticket $ticket
+     *
+     * @return Reservation
+     */
+    public function addTicket(\AppBundle\Entity\Ticket $ticket)
+    {
+        $this->ticket[] = $ticket;
+
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     *
+     * @param \AppBundle\Entity\Ticket $ticket
+     */
+    public function removeTicket(\AppBundle\Entity\Ticket $ticket)
+    {
+        $this->ticket->removeElement($ticket);
+    }
+
+    /**
+     * Get ticket
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTicket()
+    {
+        return $this->ticket;
+    }
+
+    public function __toString()
+    {
+        return $this->getCode();
     }
 }

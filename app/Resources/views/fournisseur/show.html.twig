@@ -1,41 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Fournisseur</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ fournisseur.id }}</td>
             </tr>
             <tr>
-                <th>Nomfour</th>
-                <td>{{ fournisseur.nomFour }}</td>
+                <th>Nom</th>
+                <td>{{ fournisseur.nom }}</td>
             </tr>
             <tr>
-                <th>Prenomfour</th>
-                <td>{{ fournisseur.prenomFour }}</td>
+                <th>Prenom</th>
+                <td>{{ fournisseur.prenom }}</td>
             </tr>
             <tr>
-                <th>Adressefour</th>
-                <td>{{ fournisseur.adresseFour }}</td>
+                <th>Adresse</th>
+                <td>{{ fournisseur.adresse }}</td>
             </tr>
             <tr>
-                <th>Telfour</th>
-                <td>{{ fournisseur.telFour }}</td>
+                <th>Telephone</th>
+                <td>{{ fournisseur.telephone }}</td>
             </tr>
             <tr>
-                <th>Villefour</th>
-                <td>{{ fournisseur.villeFour }}</td>
+                <th>Ville</th>
+                <td>{{ fournisseur.ville }}</td>
             </tr>
             <tr>
-                <th>Emailfour</th>
-                <td>{{ fournisseur.emailFour }}</td>
+                <th>Email</th>
+                <td>{{ fournisseur.email }}</td>
             </tr>
             <tr>
-                <th>Datefour</th>
-                <td>{% if fournisseur.dateFour %}{{ fournisseur.dateFour|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if fournisseur.date %}{{ fournisseur.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

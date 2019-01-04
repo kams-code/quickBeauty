@@ -26,37 +26,37 @@ class Equipement
     /**
      * @var string
      *
-     * @ORM\Column(name="codeEqui", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codeEqui;
+    private $code;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="designationEqui", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $designationEqui;
+    private $designation;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="prixEqui", type="integer")
+     * @ORM\Column(name="prix", type="integer")
      */
-    private $prixEqui;
+    private $prix;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateEqui", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateEqui;
+    private $date;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descEqui", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255)
      */
-    private $descEqui;
+    private $description;
 
     /**
      * @var string
@@ -70,13 +70,9 @@ class Equipement
      *     maxHeight = 600
      * )
      */
-    protected $imageEqui;
+    protected $image;
  
-    /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Fournisseur",cascade={"persist"})
-   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-   */
-   private $fournisseur;
+
 
 
     /**
@@ -90,170 +86,151 @@ class Equipement
     }
 
     /**
-     * Set codeEqui
+     * Set code
      *
-     * @param string $codeEqui
+     * @param string $code
      *
      * @return Equipement
      */
-    public function setCodeEqui($codeEqui)
+    public function setCode($code)
     {
-        $this->codeEqui = $codeEqui;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codeEqui
+     * Get code
      *
      * @return string
      */
-    public function getCodeEqui()
+    public function getCode()
     {
-        return $this->codeEqui;
+        return $this->code;
     }
 
     /**
-     * Set designationEqui
+     * Set designation
      *
-     * @param string $designationEqui
+     * @param string $designation
      *
      * @return Equipement
      */
-    public function setDesignationEqui($designationEqui)
+    public function setDesignation($designation)
     {
-        $this->designationEqui = $designationEqui;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get designationEqui
+     * Get designation
      *
      * @return string
      */
-    public function getDesignationEqui()
+    public function getDesignation()
     {
-        return $this->designationEqui;
+        return $this->designation;
     }
 
     /**
-     * Set prixEqui
+     * Set prix
      *
-     * @param integer $prixEqui
+     * @param integer $prix
      *
      * @return Equipement
      */
-    public function setPrixEqui($prixEqui)
+    public function setPrix($prix)
     {
-        $this->prixEqui = $prixEqui;
+        $this->prix = $prix;
 
         return $this;
     }
 
     /**
-     * Get prixEqui
+     * Get prix
      *
      * @return int
      */
-    public function getPrixEqui()
+    public function getPrix()
     {
-        return $this->prixEqui;
+        return $this->prix;
     }
 
     /**
-     * Set dateEqui
+     * Set date
      *
-     * @param \DateTime $dateEqui
+     * @param \DateTime $date
      *
      * @return Equipement
      */
-    public function setDateEqui($dateEqui)
+    public function setDate($date)
     {
-        $this->dateEqui = $dateEqui;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateEqui
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateEqui()
+    public function getDate()
     {
-        return $this->dateEqui;
+        return $this->date;
     }
 
     /**
-     * Set descEqui
+     * Set description
      *
-     * @param string $descEqui
+     * @param string $description
      *
      * @return Equipement
      */
-    public function setDescEqui($descEqui)
+    public function setDescription($description)
     {
-        $this->descEqui = $descEqui;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descEqui
+     * Get description
      *
      * @return string
      */
-    public function getDescEqui()
+    public function getDescription()
     {
-        return $this->descEqui;
+        return $this->description;
     }
 
     /**
-     * Set imageEqui
+     * Set image
      *
-     * @param string $imageEqui
+     * @param string $image
      *
      * @return Equipement
      */
-    public function setImageEqui($imageEqui)
+    public function setImage($image)
     {
-        $this->imageEqui = $imageEqui;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get imageEqui
+     * Get image
      *
      * @return string
      */
-    public function getImageEqui()
+    public function getImage()
     {
-        return $this->imageEqui;
+        return $this->image;
     }
-
-    /**
-     * Set fournisseur
-     *
-     * @param \AppBundle\Entity\Fournisseur $fournisseur
-     *
-     * @return Equipement
-     */
-    public function setFournisseur(\AppBundle\Entity\Fournisseur $fournisseur)
+    public function __toString()
     {
-        $this->fournisseur = $fournisseur;
-
-        return $this;
+        return $this->getDesignation();
     }
-
-    /**
-     * Get fournisseur
-     *
-     * @return \AppBundle\Entity\Fournisseur
-     */
-    public function getFournisseur()
-    {
-        return $this->fournisseur;
-    }
+  
 }

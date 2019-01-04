@@ -154,4 +154,9 @@ class Reglement
     {
         return $this->client;
     }
+
+    public function __toString()
+    {
+        return $this->getCodeRegle();
+    }
 }

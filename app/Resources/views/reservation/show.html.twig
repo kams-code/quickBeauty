@@ -1,21 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Reservation</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>Codereserv</th>
-                <td>{{ reservation.codeReserv }}</td>
+                <th>Code</th>
+                <td>{{ reservation.code }}</td>
             </tr>
             <tr>
-                <th>Datereserv</th>
-                <td>{% if reservation.dateReserv %}{{ reservation.dateReserv|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

@@ -2,7 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use AppBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="personnel")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PersonnelRepository")
  */
-class Personnel extends User
+class Personnel
 {
     /**
      * @var int
@@ -20,62 +19,49 @@ class Personnel extends User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codePerso", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=255)
      */
-    protected $codePerso;
+    private $nom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomPerso", type="string", length=255)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    protected $nomPerso;
+    private $code;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomPerso", type="string", length=255)
+     * @ORM\Column(name="prenom", type="string", length=255)
      */
-    protected $prenomPerso;
+    private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adressePerso", type="string", length=255)
+     * @ORM\Column(name="adresse", type="string", length=255)
      */
-    protected $adressePerso;
+    private $adresse;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="villePerso", type="string", length=255)
+     * @ORM\Column(name="numero", type="integer")
      */
-    protected $villePerso;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="telPerso", type="string", length=255)
-     */
-    protected $telPerso;
+    private $numero;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePerso", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    protected $datePerso;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Prestation",cascade={"persist"})
-     * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-     */
-   protected $prestation;
+    private $date;
 
 
     /**
@@ -89,194 +75,152 @@ class Personnel extends User
     }
 
     /**
-     * Set codePerso
+     * Set nom
      *
-     * @param string $codePerso
+     * @param string $nom
      *
      * @return Personnel
      */
-    public function setCodePerso($codePerso)
+    public function setNom($nom)
     {
-        $this->codePerso = $codePerso;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get codePerso
+     * Get nom
      *
      * @return string
      */
-    public function getCodePerso()
+    public function getNom()
     {
-        return $this->codePerso;
+        return $this->nom;
     }
 
     /**
-     * Set nomPerso
+     * Set code
      *
-     * @param string $nomPerso
+     * @param string $code
      *
      * @return Personnel
      */
-    public function setNomPerso($nomPerso)
+    public function setCode($code)
     {
-        $this->nomPerso = $nomPerso;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get nomPerso
+     * Get code
      *
      * @return string
      */
-    public function getNomPerso()
+    public function getCode()
     {
-        return $this->nomPerso;
+        return $this->code;
     }
 
     /**
-     * Set prenomPerso
+     * Set prenom
      *
-     * @param string $prenomPerso
+     * @param string $prenom
      *
      * @return Personnel
      */
-    public function setPrenomPerso($prenomPerso)
+    public function setPrenom($prenom)
     {
-        $this->prenomPerso = $prenomPerso;
+        $this->prenom = $prenom;
 
         return $this;
     }
 
     /**
-     * Get prenomPerso
+     * Get prenom
      *
      * @return string
      */
-    public function getPrenomPerso()
+    public function getPrenom()
     {
-        return $this->prenomPerso;
+        return $this->prenom;
     }
 
     /**
-     * Set adressePerso
+     * Set adresse
      *
-     * @param string $adressePerso
+     * @param string $adresse
      *
      * @return Personnel
      */
-    public function setAdressePerso($adressePerso)
+    public function setAdresse($adresse)
     {
-        $this->adressePerso = $adressePerso;
+        $this->adresse = $adresse;
 
         return $this;
     }
 
     /**
-     * Get adressePerso
+     * Get adresse
      *
      * @return string
      */
-    public function getAdressePerso()
+    public function getAdresse()
     {
-        return $this->adressePerso;
+        return $this->adresse;
     }
 
     /**
-     * Set villePerso
+     * Set numero
      *
-     * @param string $villePerso
+     * @param integer $numero
      *
      * @return Personnel
      */
-    public function setVillePerso($villePerso)
+    public function setNumero($numero)
     {
-        $this->villePerso = $villePerso;
+        $this->numero = $numero;
 
         return $this;
     }
 
     /**
-     * Get villePerso
+     * Get numero
      *
-     * @return string
+     * @return int
      */
-    public function getVillePerso()
+    public function getNumero()
     {
-        return $this->villePerso;
+        return $this->numero;
     }
 
     /**
-     * Set telPerso
+     * Set date
      *
-     * @param string $telPerso
+     * @param \DateTime $date
      *
      * @return Personnel
      */
-    public function setTelPerso($telPerso)
+    public function setDate($date)
     {
-        $this->telPerso = $telPerso;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get telPerso
-     *
-     * @return string
-     */
-    public function getTelPerso()
-    {
-        return $this->telPerso;
-    }
-
-    /**
-     * Set datePerso
-     *
-     * @param \DateTime $datePerso
-     *
-     * @return Personnel
-     */
-    public function setDatePerso($datePerso)
-    {
-        $this->datePerso = $datePerso;
-
-        return $this;
-    }
-
-    /**
-     * Get datePerso
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDatePerso()
+    public function getDate()
     {
-        return $this->datePerso;
+        return $this->date;
     }
 
-    /**
-     * Set prestation
-     *
-     * @param \AppBundle\Entity\Prestation $prestation
-     *
-     * @return Personnel
-     */
-    public function setPrestation(\AppBundle\Entity\Prestation $prestation)
+    public function __toString()
     {
-        $this->prestation = $prestation;
-
-        return $this;
-    }
-
-    /**
-     * Get prestation
-     *
-     * @return \AppBundle\Entity\Prestation
-     */
-    public function getPrestation()
-    {
-        return $this->prestation;
+        return $this->getNom();
     }
 }
+

@@ -24,29 +24,29 @@ class Ticket
     /**
      * @var string
      *
-     * @ORM\Column(name="codeTic", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codeTic;
+    private $code;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="montantTic", type="integer")
+     * @ORM\Column(name="montant", type="integer")
      */
-    private $montantTic;
+    private $montant;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateTic", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $dateTic;
+    private $date;
 
-       /**
-   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Reservation",cascade={"persist"})
-   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
-   */
-   private $reservation; 
+    /**
+     * @ORM\ManyToOne(targetEntity="Reservation", inversedBy="ticket")
+     * @ORM\JoinColumn(name="reservation_id", referencedColumnName="id")
+     */
+    private $reservation;
 
  
   
@@ -61,100 +61,78 @@ class Ticket
     }
 
     /**
-     * Set codeTic
+     * Set code
      *
-     * @param string $codeTic
+     * @param string $code
      *
      * @return Ticket
      */
-    public function setCodeTic($codeTic)
+    public function setCode($code)
     {
-        $this->codeTic = $codeTic;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codeTic
+     * Get code
      *
      * @return string
      */
-    public function getCodeTic()
+    public function getCode()
     {
-        return $this->codeTic;
+        return $this->code;
     }
 
     /**
-     * Set montantTic
+     * Set montant
      *
-     * @param integer $montantTic
+     * @param integer $montant
      *
      * @return Ticket
      */
-    public function setMontantTic($montantTic)
+    public function setMontant($montant)
     {
-        $this->montantTic = $montantTic;
+        $this->montant = $montant;
 
         return $this;
     }
 
     /**
-     * Get montantTic
+     * Get montant
      *
      * @return int
      */
-    public function getMontantTic()
+    public function getMontant()
     {
-        return $this->montantTic;
+        return $this->montant;
     }
 
     /**
-     * Set dateTic
+     * Set date
      *
-     * @param \DateTime $dateTic
+     * @param \DateTime $date
      *
      * @return Ticket
      */
-    public function setDateTic($dateTic)
+    public function setDate($date)
     {
-        $this->dateTic = $dateTic;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get dateTic
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDateTic()
+    public function getDate()
     {
-        return $this->dateTic;
+        return $this->date;
     }
 
-    /**
-     * Set reservation
-     *
-     * @param \AppBundle\Entity\Reservation $reservation
-     *
-     * @return Ticket
-     */
-    public function setReservation(\AppBundle\Entity\Reservation $reservation)
-    {
-        $this->reservation = $reservation;
-
-        return $this;
-    }
-
-    /**
-     * Get reservation
-     *
-     * @return \AppBundle\Entity\Reservation
-     */
-    public function getReservation()
-    {
-        return $this->reservation;
-    }
+    
 
     /**
      * Set client
@@ -178,5 +156,34 @@ class Ticket
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Set reservation
+     *
+     * @param \AppBundle\Entity\Reservation $reservation
+     *
+     * @return Ticket
+     */
+    public function setReservation(\AppBundle\Entity\Reservation $reservation = null)
+    {
+        $this->reservation = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Get reservation
+     *
+     * @return \AppBundle\Entity\Reservation
+     */
+    public function getReservation()
+    {
+        return $this->reservation;
+    }
+
+    public function __toString()
+    {
+        return $this->getCode();
     }
 }

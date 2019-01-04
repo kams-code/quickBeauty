@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Personnel;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Personnel controller.
@@ -36,6 +38,8 @@ class PersonnelController extends Controller
      *
      * @Route("/new", name="personnel_new")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
+
      */
     public function newAction(Request $request)
     {
@@ -103,6 +107,8 @@ class PersonnelController extends Controller
      *
      * @Route("/{id}", name="personnel_delete")
      * @Method("DELETE")
+     *  @Security("is_granted('ROLE_ADMIN')")
+
      */
     public function deleteAction(Request $request, Personnel $personnel)
     {

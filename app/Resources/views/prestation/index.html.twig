@@ -1,18 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Prestations list</h1>
- <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste des prestation</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -21,6 +10,7 @@
                 <th>Description</th>
                 <th>Montant</th>
                 <th>Image</th>
+                <th>Date</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -28,42 +18,24 @@
         {% for prestation in prestations %}
             <tr>
                 <td><a href="{{ path('prestation_show', { 'id': prestation.id }) }}">{{ prestation.id }}</a></td>
-                <td>{{ prestation.codePres }}</td>
-                <td>{{ prestation.designationPres }}</td>
-                <td>{{ prestation.descPres }}</td>
-                <td>{{ prestation.montantPres }}</td>
-                <td><img src="{{ asset('uploads/images/' ~ prestation.imagePres) }}" height="100px" width="250px">
-</td>
+                <td>{{ prestation.code }}</td>
+                <td>{{ prestation.designation }}</td>
+                <td>{{ prestation.description }}</td>
+                <td>{{ prestation.montant }}</td>
+                <td><img src="{{ asset('uploads/images/' ~ prestation.image) }}" height="100px" width="250px"></td>
+                <td>{% if prestation.date %}{{ prestation.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('prestation_show', { 'id': prestation.id }) }}"><i class="ion-eye"></i></a>
+                            <a href="{{ path('prestation_show', { 'id': prestation.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('prestation_edit', { 'id': prestation.id }) }}"><i class="ion-edit"></i></a>
-                        </li>
-                        <li>
-                            
-                                
-                                 <a href="{{ path('prestation_delete', { 'id': prestation.id }) }}"><i class="ion-close"></i></a>
-                            
+                            <a href="{{ path('prestation_edit', { 'id': prestation.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-    <ul>
-        <li>
-            <a href="{{ path('prestation_new') }}">Create a new prestation</a>
-        </li>
-    </ul>
+   
 {% endblock %}

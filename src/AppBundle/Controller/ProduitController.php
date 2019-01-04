@@ -5,7 +5,9 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Produit controller.
@@ -36,6 +38,7 @@ class ProduitController extends Controller
      *
      * @Route("/new", name="produit_new")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function newAction(Request $request)
     {
@@ -62,6 +65,7 @@ class ProduitController extends Controller
      *
      * @Route("/{id}", name="produit_show")
      * @Method("GET")
+     * 
      */
     public function showAction(Produit $produit)
     {
@@ -78,6 +82,7 @@ class ProduitController extends Controller
      *
      * @Route("/{id}/edit", name="produit_edit")
      * @Method({"GET", "POST"})
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function editAction(Request $request, Produit $produit)
     {
@@ -103,6 +108,7 @@ class ProduitController extends Controller
      *
      * @Route("/{id}", name="produit_delete")
      * @Method("DELETE")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Produit $produit)
     {

@@ -1,25 +1,23 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Ticket</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ ticket.id }}</td>
             </tr>
             <tr>
-                <th>Codetic</th>
-                <td>{{ ticket.codeTic }}</td>
+                <th>Code</th>
+                <td>{{ ticket.code }}</td>
             </tr>
             <tr>
-                <th>Montanttic</th>
-                <td>{{ ticket.montantTic }}</td>
+                <th>Montant</th>
+                <td>{{ ticket.montant }}</td>
             </tr>
             <tr>
-                <th>Datetic</th>
-                <td>{% if ticket.dateTic %}{{ ticket.dateTic|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if ticket.date %}{{ ticket.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
         </tbody>
     </table>

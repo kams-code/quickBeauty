@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Prestation
  *
@@ -24,44 +24,58 @@ class Prestation
     /**
      * @var string
      *
-     * @ORM\Column(name="codePres", type="string", length=255, unique=true)
+     * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
-    private $codePres;
+    private $code;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="designationPres", type="string", length=255)
+     * @ORM\Column(name="designation", type="string", length=255)
      */
-    private $designationPres;
+    private $designation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descPres", type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255)
      */
-    private $descPres;
+    private $description;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="montantPres", type="integer")
+     * @ORM\Column(name="montant", type="integer")
      */
-    private $montantPres;
+    private $montant;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="imagePres", type="string", length=255)
+     * @ORM\Column(name="image", type="string", length=255)
+     * * @Assert\Image(
+     *     minWidth = 200,
+     *     maxWidth = 600,
+     *     minHeight = 200,
+     *     maxHeight = 600
+     * )
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     * 
      */
-    private $imagePres;
+    private $image;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="datePres", type="datetime")
+     * @ORM\Column(name="date", type="datetime")
      */
-    private $datePres;
+    private $date;
+
+    /**
+   * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Personnel",cascade={"persist"})
+   * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
+   */
+   private $personnel;
 
 
     /**
@@ -75,87 +89,87 @@ class Prestation
     }
 
     /**
-     * Set codePres
+     * Set code
      *
-     * @param string $codePres
+     * @param string $code
      *
      * @return Prestation
      */
-    public function setCodePres($codePres)
+    public function setCode($code)
     {
-        $this->codePres = $codePres;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get codePres
+     * Get code
      *
      * @return string
      */
-    public function getCodePres()
+    public function getCode()
     {
-        return $this->codePres;
+        return $this->code;
     }
 
     /**
-     * Set designationPres
+     * Set designation
      *
-     * @param string $designationPres
+     * @param string $designation
      *
      * @return Prestation
      */
-    public function setDesignationPres($designationPres)
+    public function setDesignation($designation)
     {
-        $this->designationPres = $designationPres;
+        $this->designation = $designation;
 
         return $this;
     }
 
     /**
-     * Get designationPres
+     * Get designation
      *
      * @return string
      */
-    public function getDesignationPres()
+    public function getDesignation()
     {
-        return $this->designationPres;
+        return $this->designation;
     }
 
     /**
-     * Set descPres
+     * Set description
      *
-     * @param string $descPres
+     * @param string $description
      *
      * @return Prestation
      */
-    public function setDescPres($descPres)
+    public function setDescription($description)
     {
-        $this->descPres = $descPres;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descPres
+     * Get description
      *
      * @return string
      */
-    public function getDescPres()
+    public function getDescription()
     {
-        return $this->descPres;
+        return $this->description;
     }
 
     /**
-     * Set montantPres
+     * Set montant
      *
-     * @param integer $montantPres
+     * @param integer $montant
      *
      * @return Prestation
      */
-    public function setMontantPres($montantPres)
+    public function setMontant($montant)
     {
-        $this->montantPres = $montantPres;
+        $this->montant = $montant;
 
         return $this;
     }
@@ -165,57 +179,80 @@ class Prestation
      *
      * @return int
      */
-    public function getMontantPres()
+    public function getMontant()
     {
-        return $this->montantPres;
+        return $this->montant;
     }
 
     /**
-     * Set imagePres
+     * Set image
      *
-     * @param string $imagePres
+     * @param string $image
      *
      * @return Prestation
      */
-    public function setImagePres($imagePres)
+    public function setImage($image)
     {
-        $this->imagePres = $imagePres;
+        $this->image = $image;
 
         return $this;
     }
 
     /**
-     * Get imagePres
+     * Get image
      *
      * @return string
      */
-    public function getImagePres()
+    public function getImage()
     {
-        return $this->imagePres;
+        return $this->image;
     }
 
     /**
-     * Set datePres
+     * Set date
      *
-     * @param \DateTime $datePres
+     * @param \DateTime $date
      *
      * @return Prestation
      */
-    public function setDatePres($datePres)
+    public function setDate($date)
     {
-        $this->datePres = $datePres;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get datePres
+     * Get date
      *
      * @return \DateTime
      */
-    public function getDatePres()
+    public function getDate()
     {
-        return $this->datePres;
+        return $this->date;
+    }
+
+    /**
+     * Set personnel
+     *
+     * @param \AppBundle\Entity\Personnel $personnel
+     *
+     * @return Prestation
+     */
+    public function setPersonnel(\AppBundle\Entity\Personnel $personnel = null)
+    {
+        $this->personnel = $personnel;
+
+        return $this;
+    }
+
+    /**
+     * Get personnel
+     *
+     * @return \AppBundle\Entity\Personnel
+     */
+    public function getPersonnel()
+    {
+        return $this->personnel;
     }
 }
-

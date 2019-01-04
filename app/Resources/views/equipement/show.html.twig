@@ -1,37 +1,35 @@
-{% extends 'base.html.twig' %}
+{% extends 'shower.html.twig' %}
 
-{% block body %}
-    <h1>Equipement</h1>
-
-    <table>
+{% block form %}
+   
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ equipement.id }}</td>
             </tr>
             <tr>
-                <th>Codeequi</th>
-                <td>{{ equipement.codeEqui }}</td>
+                <th>Code</th>
+                <td>{{ equipement.code }}</td>
             </tr>
             <tr>
-                <th>Designationequi</th>
-                <td>{{ equipement.designationEqui }}</td>
+                <th>Designation</th>
+                <td>{{ equipement.designation }}</td>
             </tr>
             <tr>
-                <th>Prixequi</th>
-                <td>{{ equipement.prixEqui }}</td>
+                <th>Prix</th>
+                <td>{{ equipement.prix }}</td>
             </tr>
             <tr>
-                <th>Dateequi</th>
-                <td>{% if equipement.dateEqui %}{{ equipement.dateEqui|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <th>Date</th>
+                <td>{% if equipement.date %}{{ equipement.date|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Descequi</th>
-                <td>{{ equipement.descEqui }}</td>
+                <th>Description</th>
+                <td>{{ equipement.description }}</td>
             </tr>
             <tr>
-                <th>Imageequi</th>
-                <td>{{ equipement.imageEqui }}</td>
+                <th>Image</th>
+                <td>{{ equipement.image }}</td>
             </tr>
         </tbody>
     </table>

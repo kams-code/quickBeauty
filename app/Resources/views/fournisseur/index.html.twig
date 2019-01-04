@@ -1,19 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'list.html.twig' %}
 
-{% block body %}
-    <h1>Fournisseurs list</h1>
-   <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">liste de fournisseurs</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive">
-                                                    <table class="table">
-   
+{% block list %}
+    
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,13 +19,13 @@
         {% for fournisseur in fournisseurs %}
             <tr>
                 <td><a href="{{ path('fournisseur_show', { 'id': fournisseur.id }) }}">{{ fournisseur.id }}</a></td>
-                <td>{{ fournisseur.nomFour }}</td>
-                <td>{{ fournisseur.prenomFour }}</td>
-                <td>{{ fournisseur.adresseFour }}</td>
-                <td>{{ fournisseur.telFour }}</td>
-                <td>{{ fournisseur.villeFour }}</td>
-                <td>{{ fournisseur.emailFour }}</td>
-                <td>{% if fournisseur.dateFour %}{{ fournisseur.dateFour|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ fournisseur.nom }}</td>
+                <td>{{ fournisseur.prenom }}</td>
+                <td>{{ fournisseur.adresse }}</td>
+                <td>{{ fournisseur.telephone }}</td>
+                <td>{{ fournisseur.ville }}</td>
+                <td>{{ fournisseur.email }}</td>
+                <td>{% if fournisseur.date %}{{ fournisseur.date|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
                     <ul>
                         <li>
@@ -51,17 +39,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-   </div>
-   </div>
-   </div>
-   </div>
-   </div>
-   </div>
-   </div>
-    <ul>
-        <li>
-            <a href="{{ path('fournisseur_new') }}">Create a new fournisseur</a>
-        </li>
-    </ul>
+    
 {% endblock %}

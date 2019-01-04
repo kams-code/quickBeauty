@@ -3,8 +3,8 @@
 {% block body %}
     <h1>Prestation creation</h1>
 
-    {{ form_start(form,{'attr':{'class':'form'}}) }}
-        {{ form_widget(form,{'attr':{'class':'form-group'}}) }}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
         <input type="submit" value="Create" />
     {{ form_end(form) }}
 
